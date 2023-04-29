@@ -1,4 +1,11 @@
 # TugasKelompok14
+Nama Nama  Kelompok :
+
+Aditya Dinata
+
+Muhammad Akmal Falah
+
+Valentina Febrizah Penii Sogen
 
 **Project Title: Aldous Mart (Supermarket)**
 
