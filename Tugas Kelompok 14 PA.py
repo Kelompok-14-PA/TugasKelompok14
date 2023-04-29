@@ -579,7 +579,7 @@ def main():
 
 def menu_login():
     os.system("cls")
-    print("==Selamat datang di program supermarket aldousmart!==")
+    print("==Selamat datang di program supermarket aldous mart!==")
     print("Silakan pilih opsi:")
     print("1. Admin")
     print("2. Kasir")
