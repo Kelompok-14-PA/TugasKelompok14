@@ -130,74 +130,16 @@ def produk():
         print("\n===== MENU =====")
         print("Pilih aksi:")
         print("1. Lihat semua produk")
-        print("2. Cari produk berdasarkan kategori")
-        print("3. Beli Produk")
+        print("2. Beli Produk")
         print("4. Kembali ke menu utama")
         try:
             pilihan = int(input("Masukkan pilihan (1/2/3): "))
             if pilihan == 1:
                 os.system("cls")
                 LihatProduk()
-                iyap = input(
-                    "Apakah anda ingin mengurutkan produk sesuai harga? \nY/T\n"
-                ).upper()
-                if iyap == "Y":
-                    LihatProduk2()
-                elif iyap == "T":
-                    LihatProduk()
             elif pilihan == 2:
-                os.system("cls")
-                # Menampilkan daftar kategori produk yang tersedia
-                print("Daftar kategori produk: ")
-                print(
-                    "1. Makanan\n2. Minuman\n3. Alat Tulis Kantor\n4. Peralatan Rumah Tangga\n5. Obat - Obatan"
-                )
-
-                # Meminta input kategori yang dicari dari pengguna
-                kategori = input("Masukkan nomor kategori produk: ")
-
-                # Mengubah nomor kategori menjadi nama kategori
-                if kategori == "1":
-                    nama_kategori = "Makanan"
-                elif kategori == "2":
-                    nama_kategori = "Minuman"
-                elif kategori == "3":
-                    nama_kategori = "Alat Tulis Kantor"
-                elif kategori == "4":
-                    nama_kategori = "Peralatan Rumah Tangga"
-                elif kategori == "5":
-                    nama_kategori = "Obat - Obatan"
-                else:
-                    print("Nomor kategori tidak valid.")
-                    continue
-
-                # Menampilkan produk dengan kategori yang sama menggunakan query SQL
-                mycursor.execute(
-                    "SELECT * FROM produk WHERE kategori_produk=%s",
-                    (nama_kategori,),
-                )
-                result = mycursor.fetchall()
-
-                # Menampilkan hasil pencarian produk ke layar
-                if not result:
-                    print(f"Tidak ada produk dengan kategori '{nama_kategori}'")
-                else:
-                    table = PrettyTable()
-                    table.field_names = ["ID", "Nama ", "Kategori", "Harga", "Stok"]
-                    for item in result:
-                        table.add_row(item)
-                    print(table)
-            elif pilihan == 3:
                 try:
-                    iyap = input(
-                        "Apakah anda ingin mengurutkan produk sesuai harga? \nY/T\n"
-                    ).upper()
-                    if iyap == "Y":
-                        os.system("cls")
-                        LihatProduk2()
-                    elif iyap == "T":
-                        os.system("cls")
-                        LihatProduk()
+                    produk1()
                     kode_produk = input("Masukkan kode produk: ")
                     jumlah_beli = int(input("Masukkan jumlah pembelian: "))
 
@@ -436,21 +378,6 @@ def hapus_kasir():
         print("Terjadi kesalahan saat menghapus akun kasir. Silakan coba lagi.")
 
 
-def LihatProduk2():
-    mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM produk")
-    result = mycursor.fetchall()
-    if not result:
-        print("Tidak ada produk yang tersedia.")
-        return
-    else:
-        merge_sort(result)
-        linked_list = LinkedList()
-        for item in result:
-            linked_list.append(item)
-        linked_list.display()
-
-
 def LihatProduk():
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM produk")
@@ -463,6 +390,93 @@ def LihatProduk():
         for item in result:
             linked_list.append(item)
         linked_list.display()
+
+
+def produk1():
+    LihatProduk()
+    mycursor = mydb.cursor()
+
+    # Meminta input dari pengguna
+    pilih_kategori = input(
+        "Apakah anda ingin mencari produk berdasarkan kategori? (Y/N): "
+    )
+
+    # Jika pengguna memilih mencari produk berdasarkan kategori
+    if pilih_kategori.upper() == "Y":
+        print("Daftar kategori produk: ")
+        print(
+            "1. Makanan\n2. Minuman\n3. Alat Tulis Kantor\n4. Peralatan Rumah Tangga\n5. Obat - Obatan"
+        )
+
+        # Meminta input kategori yang dicari dari pengguna
+        kategori = input("Masukkan nomor kategori produk: ")
+
+        # Mengubah nomor kategori menjadi nama kategori
+        if kategori == "1":
+            nama_kategori = "Makanan"
+        elif kategori == "2":
+            nama_kategori = "Minuman"
+        elif kategori == "3":
+            nama_kategori = "Alat Tulis Kantor"
+        elif kategori == "4":
+            nama_kategori = "Peralatan Rumah Tangga"
+        elif kategori == "5":
+            nama_kategori = "Obat - Obatan"
+        else:
+            print("Nomor kategori tidak valid.")
+            return
+
+        # Menampilkan produk dengan kategori yang sama menggunakan query SQL
+        mycursor.execute(
+            "SELECT * FROM produk WHERE kategori_produk=%s",
+            (nama_kategori,),
+        )
+        result = mycursor.fetchall()
+
+        # Menampilkan hasil pencarian produk ke layar
+        if not result:
+            print(f"Tidak ada produk dengan kategori '{nama_kategori}'")
+        else:
+            pilih_sort = input(
+                "Apakah anda ingin mengurutkan hasil pencarian berdasarkan harga? (Y/N): "
+            )
+            if pilih_sort.upper() == "Y":
+                merge_sort(result)  # mengurutkan hasil pencarian berdasarkan harga
+            table = PrettyTable()
+            table.field_names = ["ID", "Nama ", "Kategori", "Harga", "Stok"]
+            for item in result:
+                table.add_row(item)
+            print(table)
+
+    # Jika pengguna tidak ingin mencari produk berdasarkan kategori
+    elif pilih_kategori.upper() == "N":
+        mycursor.execute("SELECT * FROM produk")
+        result = mycursor.fetchall()
+
+        # Meminta input pengguna untuk mengurutkan semua produk berdasarkan harga
+        pilih_sort = input(
+            "Apakah anda ingin mengurutkan semua produk berdasarkan harga? (Y/N): "
+        )
+        if pilih_sort.upper() == "Y":
+            merge_sort(result)
+            table = PrettyTable()
+            table.field_names = ["ID", "Nama ", "Kategori", "Harga", "Stok"]
+            for item in result:
+                table.add_row(item)
+            print(table)  # mengurutkan semua produk berdasarkan harga
+        # Menampilkan semua produk ke layar
+        if not result:
+            print("Tidak ada produk yang tersedia.")
+        else:
+            table = PrettyTable()
+            table.field_names = ["ID", "Nama ", "Kategori", "Harga", "Stok"]
+            for item in result:
+                table.add_row(item)
+            print(table)
+
+    # Jika input pengguna tidak valid
+    else:
+        print("Input tidak valid.")
 
 
 def transaksi():
@@ -504,7 +518,7 @@ def kasir():
         if pilihan == 1:
             transaksi()
         elif pilihan == 2:
-            LihatProduk()
+            produk1()
         elif pilihan == 0:
             return
 
@@ -565,7 +579,7 @@ def main():
 
 def menu_login():
     os.system("cls")
-    print("Selamat datang di program!")
+    print("==Selamat datang di program supermarket aldousmart!==")
     print("Silakan pilih opsi:")
     print("1. Admin")
     print("2. Kasir")
