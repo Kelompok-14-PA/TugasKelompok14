@@ -37,8 +37,10 @@ Sama seperti mysql.connector tadi, modul ini digunakan untuk menghubungkan progr
 Adalah sebuah Library yang digunakan untuk membuat table yang mudah di baca oleh manusia.
 	Time 
 Time merupakan modul yang digunakan untuk mengakses fungsi-fungsi terkait waktu, seperti menunda eksekusi program untuk beberapa waktu tertentu.
+
 B.	Class Node
 Class Node yang merupakan suatu kerangka yang digunakan dalam membuat objek struktur data Linked List. Dalam class Node terdapat def __init__, yang berfungsi untuk menginisialisasi objek yang dibuat dengan nilai-nilai awal tertentu.
+
 C.	Class LinkedList
 Class Linked List yang merupakan struktur data yang terdiri dari objek Node yang terhubung satu sama lain. Dalam Class LinkedList terdapat beberapa def yaitu:
 •	Def __init__, yang berfungsi untuk menginisialisasi objek yang dibuat dengan nilai-nilai awal tertentu.
@@ -101,42 +103,74 @@ CARA PENGGUNAAN
 
 Menu Tampilan Awal
 Pada menu tampilan awal terdapat 4 pilihan yaitu yang pertama login Admin, yang kedua login Kasir yang ketiga pembeli yang terakhir adalah Keluar:
+
 1. Pilih angka "1" jika ingin masuk sebagai Admin maka akan di tampilkan menu admin
+
 2. Pilih angka "2" jika ingin masuk sebagai Kasir maka akan di tampilkan menu Kasir
+
 3. Pilih angka "3" jika ingin masuk sebagai Pembeli maka akan di tampilkan menu Pembeli
+
 4.Pilih angka "0" jika ingin Keluar
 
 Login Admin
+
 Pada Login Admin user harap memasukan username dan password yang sudah di sediakan yaitu username = Admin Password = Admin.Setelah login maka akan di tampilkan 3 opsi yaitu Kelola Produk, Kelola Kasir dan Kembali ke menu awal                                                                                                                                                              
 1.Pertama menu Kelola produk pada menu akan ditampilkan 4 opsi yaitu: 
+
 1. Tambah produk
+
 2. Hapus produk
+
 3. Perbarui produk
+
 4. Kembali ke menu utama
+
 Jika memilih opsi 1 maka user dapat menambkan produk sesuai kategori produk dan dapat menentukan Harga dan Stok produk tersebut
+
 Jika memilih opsi 2 maka user dapat menghapus produk yang di ingginkan dengan id produk yaitu nama barang tersebut
+
 Jika memilih opsi 3 maka user dapat Perbarui produk yang ingin di ingginkan dengan memasukan nama barang tersebut maka user dapat mengubah nama produk, kategori produk, harga produk, dan stok produk
+
 Jika memilih opsi 4 maka user akan kembali ke menu utama admin
+
 2.Kedua menu Kelola Kasir pada menu akan di tampilkan 3 opsi yaitu:
+
 1. Tambah akun kasir
+
 2. Hapus akun kasir
+
 3. Kembali ke menu utama
+
 Jika memilih opsi 1 maka user bisa menambahkan kasir baru dengan menambahkan username dan password jika sudah menambahkan otomatis sudah masuk di database
+
 Jika memilih opsi 2 maka user bisa menghapus akun kasir dengan memasukan nama username kasir yang ingin di hapus maka otomatis terhapus di database
+
 Jika memilih opsi 3 maka user akan kembali ke menu utama
+
 3.Ketiga menu Kembali ke menu utama maka user akan kembali ke menu awal
 
 Login Kasir
+
 Pada Login KAsir user harap memasukan username dan password yang sudah di sediakan yaitu username = Kasir Password = Kasir.Setelah login maka akan di tampilkan 3 opsi yaitu Transaksi Penjualan, Daftar Produk dan Kembali ke menu awal
+
 1.Pertama di menu Transaksi Penjualan dapat melihat History database yang telah melakukan pembelian dan dapat melihat ID produk, Waktu, Jumlah dan Nama Produk
+
 2.Kedua di Menu Daftar Produk maka akan di tampilkan 3 opsi yaitu Lihat semua Produk, Cari produk Berdasrkan Kategori dan Kembali ke menu utama
+
 -Opsi 1 yaitu lihat semua produk dapat melihat semua produk dan bisa di urutkan sesuai harga
+
 -Opsi 2 yaitu Mencari Produk berdasarkan Kategori yang sudah di buat
+
 -Opsi 3 yaitu Kembali ke menu utama
+
 3.Ketiga yaitu Kembali Ke menu utama
 
 Login Pembeli
+
 Pada Login Pembeli maka akan di tampilkan 3 opsi yaitu Lihat daftar produk, Beli Produk, dan Kembali Ke menu utama
+
 1.Pertama Lihat daftar produk pembeli dapat melihat Daftar-daftar produk yang di Jual di Supermarket. Tertera juga Harga Produk Tersebut dan kode produk jika ingin membeli
+
 2.Kedua Beli Produk maka pembeli dapat memasukan kode produk dan ingin membeli berapa stok dan akan di cetak struk setelah membeli dan melihat total harga produk yang di beli
+
 3.Ketiga kembali ke menu utama user akan kembali ke menu awal program
