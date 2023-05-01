@@ -480,13 +480,12 @@ def produk1():
 
 
 def transaksi():
-    mydb = mysql.connector.connect(
-        host="sql12.freemysqlhosting.net",
-        user="sql12614071",
-        password="iFBuUCp2EU",
-        database="sql12614071",
+   mydb = mysql.connector.connect(
+        host="db4free.net",
+        user="kelompok14",
+        password="Aditya1234",
+        database="database14",
     )
-
     # Buat cursor untuk melakukan query
     mycursor = mydb.cursor()
 
