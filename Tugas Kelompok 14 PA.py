@@ -480,7 +480,7 @@ def produk1():
 
 
 def transaksi():
-   mydb = mysql.connector.connect(
+    mydb = mysql.connector.connect(
         host="db4free.net",
         user="kelompok14",
         password="Aditya1234",
