@@ -358,9 +358,10 @@ def tambah_kasir():
         mydb.commit()
 
         print(f"Akun kasir '{username}' berhasil ditambahkan ke database.")
+        time.sleep(2)
     except:
         print("Terjadi kesalahan saat menambahkan akun kasir. Silakan coba lagi.")
-
+        time.sleep(2)
 
 def hapus_kasir():
     try:
@@ -374,9 +375,10 @@ def hapus_kasir():
         mydb.commit()
 
         print(f"Akun kasir '{username}' berhasil dihapus dari database.")
+        time.sleep(2)
     except:
         print("Terjadi kesalahan saat menghapus akun kasir. Silakan coba lagi.")
-
+        time.sleep(2)
 
 def LihatProduk():
     mycursor = mydb.cursor()
