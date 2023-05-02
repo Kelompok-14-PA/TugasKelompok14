@@ -555,6 +555,14 @@ def menu(user):
 
 
 def login():
+    connection = pymysql.connect(
+    host="db4free.net",
+    user="kelompok14",
+    password="Aditya1234",
+    db="database14",
+    charset="utf8mb4",
+    cursorclass=pymysql.cursors.DictCursor,
+    )
     while True:
         username = input("Username: ")
         password = input("Password: ")
